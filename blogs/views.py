@@ -23,6 +23,8 @@ def home(request):
     context['posts'] = posts
     return render(request, 'blogs/home.html',context)
 def list(request):
+    posts = Post.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:4]
+    context['posts'] = posts
     return render(request, 'blogs/list.html',context)
 
 def post(request,id):
