@@ -159,7 +159,7 @@ CKEDITOR_CONFIGS = {
 BASE_URL = "http://127.0.0.1:8000/blogs/"
 SITE_NAME = "Jingwei's"
 SUBTITLE = "Stay Hungry , Stay Foolish."
-AVATAR = 'images/logo.png'
+AVATAR = 'blogs/images/logo.png'
 THEME_NAME = "hugo-ink"
 PAGINATE = 5
 # "dark" or "auto"
@@ -168,13 +168,13 @@ PAGINATE = 5
 # customJS = ["js/custom.js", "js/custom1.js"]  # Custom JS scripts.
 THEME_MODE = "auto"
 
-COPYRIGHT = "© Copyright [Jingwei's](https://leijingwei.com)"
+COPYRIGHT = "2021 © Copyright [Jingwei's](https://leijingwei.com)"
 
 # pygmentsstyle = "vs"
 # pygmentscodefences = true
 # pygmentscodefencesguesssyntax = true
 
-GOOGLE_ANALYTICS = "UA-86278584-8"
+GOOGLE_ANALYTICS_ID = "UA-86278584-8"
 DISQUS_SHORT_NAME = ""
 # Nav.
 NAVS = [ 
@@ -199,7 +199,7 @@ SOCIAL = [
     {
         'name': 'Github',
         'icon': 'github',
-        'url': 'https://github.com/leialbert/blog'
+        'url': 'https://github.com/leialbert/django-blog'
     },
     {
         'name': 'RSS',

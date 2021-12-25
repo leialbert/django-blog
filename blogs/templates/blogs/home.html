@@ -2,31 +2,26 @@
 {% block content %}
 <div class="recent-posts section">
 	<div class="posts">
+		{% for post in posts %}
 			<div class="post">
 				<div class="post-header">
 					<div class="meta">
 						<div class="date">
-							<span class="day">11</span>
-					<span class="rest">Apr 2021</span>
+							<span class="day">{{ post.pub_date|date:"d" }}</span>
+					<span class="rest">{{ post.pub_date|date:"M Y" }}</span>
 						</div>
 					</div>
 					<div class="matter">
 						<h4 class="title small">
-							<a href="/posts/gunicorn-running/">03 Gunicorn 运行</a>
+							<a href="{% url 'blogs:post' post.id %}">{{ post.title }}</a>
 						</h4>
 						<span class="description">
-							
-								## 基本用法
-```shell
-gunicorn [OPTIONS] [WSGI_APP]
-```
-这里的WSGI_APP一般格式是模块名称加上变量名称。在20.1.0这个版本后，这个地方变成了一个config文件。
-举例来说：文件名为t...
-							
+							{{ post.intro }}
 						</span>
 					</div>
 				</div>
-			</div>		
+			</div>
+		{% endfor %}		
 
 			
 <ul class="pagination">

@@ -5,17 +5,11 @@
 	<meta name="generator" content="Hugo 0.82.0" />
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Jingwei&#39;s - Stay Hungry , Stay Foolish. </title>
+	<title>{{ SITE_NAME }} - {{ SUBTITLE }} </title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="alternate" type="application/rss+xml" href="http://leijingwei.com/index.xml" title="Jingwei's" />
-	<meta itemprop="name" content="Jingwei&#39;s">
-	<meta itemprop="description" content=""><meta property="og:title" content="Jingwei&#39;s" />
-	<meta property="og:description" content="" />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="http://leijingwei.com/" />
-	<meta name="twitter:card" content="summary"/>
-	<meta name="twitter:title" content="Jingwei&#39;s"/>
-	<meta name="twitter:description" content=""/>
+	<link rel="alternate" type="application/rss+xml" href="http://leijingwei.com/index.xml" title="{{ SITE_NAME }}" />
+	<meta itemprop="name" content="{{ SITE_NAME }}">
+
 	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" ype="text/css" media="screen" href="{% static 'blogs/css/normalize.css' %}" />
 	<link rel="stylesheet" ype="text/css" media="screen" href="{% static 'blogs/css/main.css' %}" />
@@ -30,14 +24,18 @@
 		<div class="header">
 	
 		<div class="avatar">
-			<a href="http://leijingwei.com/">
-				<img src="{% static 'blogs/images/logo.png' %}" alt="Jingwei&#39;s" />
+			<a href="{{ BASE_URL }}">
+				<img src="{% static AVATAR %}" alt="{{ SITE_NAME }}" />
 			</a>
 		</div>
 	
-	<h1 class="site-title"><a href="http://leijingwei.com/">Jingwei&#39;s</a></h1>
-	<div class="site-description"><p>Stay Hungry , Stay Foolish.</p><nav class="nav social">
-			<ul class="flat"><li><a href="https://github.com/leienshu/blog" title="Github"><i data-feather="github"></i></a></li><li><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a></li></ul>
+	<h1 class="site-title"><a href="{{ BASE_URL }}">{{ SITE_NAME }}</a></h1>
+	<div class="site-description"><p>{{ SUBTITLE }}</p><nav class="nav social">
+			<ul class="flat">
+				{% for s in SOCIAL %}
+				<li><a href="{{ s.url }}" title="{{ s.name }}"><i data-feather="{{ s.icon }}"></i></a></li>
+				{% endfor %}
+			</ul>
 		</nav><span class="scheme-toggle"><a href="#" id="scheme-toggle"></a></div>
 
 	<nav class="nav">
@@ -45,7 +43,7 @@
 
 			{% for menu in NAVS %}
 			<li>
-				<a href="{% url 'home' %}{{menu.slug}}">{{ menu.title }}</a>
+				<a href="{% url 'blogs:home' %}{{menu.slug}}">{{ menu.title }}</a>
 			</li>
 			{% endfor %}
 			
@@ -62,7 +60,7 @@
 
 	<div class="footer wrapper">
 	<nav class="nav">
-		<div>2021  © Copyright [Jingwei's](https://leijingwei.com) |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+		<div>{{ COPYRIGHT }} |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
 	</nav>
     </div>
 
@@ -71,7 +69,7 @@
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-86278584-8', 'auto');
+	ga('create', '{{ GOOGLE_ANALYTICS_ID }}', 'auto');
 	
 	ga('send', 'pageview');
 }

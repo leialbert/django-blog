@@ -6,72 +6,27 @@
 				
 					<div class="meta">
 						<div class="date">
-							<span class="day">11</span>
-							<span class="rest">Apr 2021</span>
+							<span class="day">{{ post.pub_date|date:"d" }}</span>
+							<span class="rest">{{ post.pub_date|date:"M Y" }}</span>
 						</div>
 					</div>
 				
 				<div class="matter">
-					<h1 class="title">03 Gunicorn 运行</h1>
+					<h1 class="title">{{ post.title }}</h1>
 				</div>
 			</div>
 					
-			<div class="markdown">
-				<h2 id="基本用法">基本用法</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gunicorn [OPTIONS] [WSGI_APP]
-</code></pre></div><p>这里的WSGI_APP一般格式是模块名称加上变量名称。在20.1.0这个版本后，这个地方变成了一个config文件。
-举例来说：文件名为test.py</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> app(environ, start_response):
-    <span style="color:#a31515">&#34;&#34;&#34;Simplest possible application object&#34;&#34;&#34;</span>
-    data = <span style="color:#a31515">b</span><span style="color:#a31515">&#39;Hello, World!</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>
-    status = <span style="color:#a31515">&#39;200 OK&#39;</span>
-    response_headers = [
-        (<span style="color:#a31515">&#39;Content-type&#39;</span>, <span style="color:#a31515">&#39;text/plain&#39;</span>),
-        (<span style="color:#a31515">&#39;Content-Length&#39;</span>, str(len(data)))
-    ]
-    start_response(status, response_headers)
-    <span style="color:#00f">return</span> iter([data])
-</code></pre></div><p>这时候你要启动程序要用下面的命令：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">gunicorn --workers=2 test:app
-</code></pre></div><p>这里的变量名称也可以是一个函数调用，比如上面的的例子可以改成这样的：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> create_app():
-    app = FrameworkApp()
-    ...
-    <span style="color:#00f">return</span> app
-</code></pre></div><p>这样调用也是一样的效果：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">gunicorn --workers=2 &#39;test:create_app()&#39;
-</code></pre></div><h2 id="常用配置参数">常用配置参数</h2>
-<ul>
-<li>-c CONFIG, &ndash;config=CONFIG 定义配置文件的路径</li>
-<li>-b BIND, &ndash;bind=BIND 定义服务器通信地址和端口</li>
-<li>-w WORKERS, &ndash;workers=WORKERS 定义工作进程的数量，这个数量大概每个CPU配置2-4个</li>
-<li>-k WORKERCLASS &ndash;worker-class=WORKERCLASS 要运行哪种类型的工作进程。可以设置为（sync, eventlet, gevent, tornado, gthread. sync）中的一种。</li>
-<li>-n APP_NAME, &ndash;name=APP_NAME 如果开启了可以设置进程名。
-其他参数请查阅官方文档吧。</li>
-</ul>
-<h2 id="集成">集成</h2>
-<h3 id="django">Django</h3>
-<p>如果没有定义的话，gunicorn 会自动去调用一个WSGI的应用程序，比如一个典型的Django程序，gunicorn的格式如下：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">gunicorn myproject.wsgi
-</code></pre></div><p>部署起来相当方便哦。
-上面要注意的是，你的项目要在python PATH下，最简单的办法就是和Django目录下的manage.py放在同一个目录。</p>
-<p>还有个配置，这个可以直接配置Django settings中的内容：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">gunicorn --env DJANGO_SETTINGS_MODULE=myproject.settings myproject.wsgi
-</code></pre></div><h3 id="粘贴部署">粘贴部署</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">gunicorn --paste development.ini -b :8080 --chdir /path/to/project
-gunicorn --paste development.ini#admin -b :8080 --chdir /path/to/project
-</code></pre></div>
-			</div>
+			<!-- <div class="markdown"> -->
+				{{ post.body }}
+			<!-- </div> -->
 
 			<div class="tags">
-				
 					
 						<ul class="flat">
 							
-							<li><a href="/tags/gunicorn">gunicorn</a></li>
+							<li>{% for tag in tags %}<a href="{% url 'blogs:tagdetail' tag.id %}">{{ tag.name }}</a>{% endfor %}</li>
 							
 						</ul>
-					
 				
 		</div></div>
 	</div>
