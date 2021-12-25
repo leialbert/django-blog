@@ -1,6 +1,8 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
 
+from blogs.models import Tag
+
 def home(request):
     context = {
         'title':'Hello Blog',
@@ -17,7 +19,11 @@ def about(request):
     return render(request, 'blogs/about.html')
 
 def cloudtag(request):
-    return render(request, 'blogs/tags.html')
+    tags = Tag.objects.all()
+    context = {
+        'tags':tags,
+    }
+    return render(request, 'blogs/tags.html',context)
 
 def tagdetail(request, tagname):
     return render(request, 'blogs/tagdetail.html')
