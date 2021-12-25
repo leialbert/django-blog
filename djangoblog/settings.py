@@ -156,7 +156,7 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
-BASE_URL = "http://leijingwei.com/"
+BASE_URL = "http://127.0.0.1:8000/blogs/"
 SITE_NAME = "Jingwei's"
 SUBTITLE = "Stay Hungry , Stay Foolish."
 AVATAR = 'images/logo.png'
@@ -177,7 +177,24 @@ COPYRIGHT = "© Copyright [Jingwei's](https://leijingwei.com)"
 GOOGLE_ANALYTICS = "UA-86278584-8"
 DISQUS_SHORT_NAME = ""
 # Nav.
-NAV_NAME = ['Home','Posts','About','Tags']
+NAVS = [ 
+    {
+        'title':'Home',
+        'slug':'home'
+    },
+    {
+        'title':'Posts',
+        'slug':'posts'
+    },
+    {
+        'title':'About',
+        'slug':'about'
+    },
+    {
+        'title':'Tags',
+        'slug':'tags'
+    },
+]
 SOCIAL = [
     {
         'name': 'Github',

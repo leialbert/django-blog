@@ -42,22 +42,12 @@
 
 	<nav class="nav">
 		<ul class="flat">
-			
+
+			{% for menu in NAVS %}
 			<li>
-				<a href="/">Home</a>
+				<a href="{% url 'home' %}{{menu.slug}}">{{ menu.title }}</a>
 			</li>
-			
-			<li>
-				<a href="/posts">All posts</a>
-			</li>
-			
-			<li>
-				<a href="/about">About</a>
-			</li>
-			
-			<li>
-				<a href="/tags">Tags</a>
-			</li>
+			{% endfor %}
 			
 		</ul>
 	</nav>
