@@ -1,22 +1,31 @@
 from django.db import models
-from django.db.models.fields import CharField, DateTimeField, EmailField, TextField
 
+from djangoblog.settings import TIME_ZONE
 class Post(models.Model):
-    def __str__(self) -> str:
-        return super().__str__()
-    title = CharField(max_length=200,null=False)
-    pub_date = DateTimeField('date published')
-    content = TextField(max_length=10000)
 
+    title = models.CharField(max_length=200,default='unnamed title',null=False)
+    slug = models.SlugField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+    intro = models.TextField(max_length=200)
+    body = models.TextField(max_length=10000)
 
+    def __str__(self):
+        return self.title
 class Tag(models.Model):
-    def __str__(self) -> str:
-        return super().__str__()
-    tag_name = CharField(max_length=20)
 
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)
+    name = models.CharField(max_length=20, null=True)
+
+    def __str__(self):
+        return self.name
+    
 class Comment(models.Model):
-    def __str__(self) -> str:
-        return super().__str__()
-    nice_name = CharField(max_length=20)
-    email = EmailField()
-    comment = CharField(max_length=400)
+    post = models.ForeignKey(Post,on_delete=models.CASCADE, null=True,blank=True)
+    nice_name = models.CharField(max_length=20)
+    email = models.EmailField()
+    content = models.CharField(max_length=400)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    
+    
+    def __str__(self):
+        return self.nice_name
