@@ -134,48 +134,9 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'moono',
-        # 'skin': 'office2013',
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
         ],
-        # 'toolbar_YourCustomToolbarConfig': [
-        #     {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
-        #     {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
-        #     {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
-        #     {'name': 'forms',
-        #      'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
-        #                'HiddenField']},
-        #     '/',
-        #     {'name': 'basicstyles',
-        #      'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
-        #     {'name': 'paragraph',
-        #      'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-        #                'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
-        #                'Language']},
-        #     {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
-        #     {'name': 'insert',
-        #      'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
-        #     '/',
-        #     {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
-        #     {'name': 'colors', 'items': ['TextColor', 'BGColor']},
-        #     {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
-        #     {'name': 'about', 'items': ['About']},
-        #     '/',  # put this to force next toolbar on new line
-        #     {'name': 'yourcustomtools', 'items': [
-        #         # put the name of your editor.ui.addButton here
-        #         'Preview',
-        #         'Maximize',
-
-        #     ]},
-        # ],
-        # 'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
-        # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
-        # 'height': 291,
-        # 'width': '100%',
-        # 'filebrowserWindowHeight': 725,
-        # 'filebrowserWindowWidth': 940,
-        # 'toolbarCanCollapse': True,
-        # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
         'tabSpaces': 4,
         'extraPlugins': ','.join([
             'uploadimage', # the upload image feature
@@ -195,8 +156,37 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
+BASE_URL = "http://leijingwei.com/"
+SITE_NAME = "Jingwei's"
+SUBTITLE = "Stay Hungry , Stay Foolish."
+AVATAR = 'images/logo.png'
+THEME_NAME = "hugo-ink"
+PAGINATE = 5
+# "dark" or "auto"
+# customCSS = "css/custom.css"  # Custom CSS applied to default styles.
+# customDarkCSS = "css/custom-dark.css"  # Custom styles applied to dark mode css.
+# customJS = ["js/custom.js", "js/custom1.js"]  # Custom JS scripts.
+THEME_MODE = "auto"
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+COPYRIGHT = "© Copyright [Jingwei's](https://leijingwei.com)"
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# pygmentsstyle = "vs"
+# pygmentscodefences = true
+# pygmentscodefencesguesssyntax = true
+
+GOOGLE_ANALYTICS = "UA-86278584-8"
+DISQUS_SHORT_NAME = ""
+# Nav.
+NAV_NAME = ['Home','Posts','About','Tags']
+SOCIAL = [
+    {
+        'name': 'Github',
+        'icon': 'github',
+        'url': 'https://github.com/leialbert/blog'
+    },
+    {
+        'name': 'RSS',
+        'icon': 'rss',
+        'url': '/index.xml'
+    },
+]
