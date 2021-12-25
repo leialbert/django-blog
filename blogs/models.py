@@ -14,6 +14,7 @@ class Tag(models.Model):
 
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
     name = models.CharField(max_length=20, null=True)
+    count = models.IntegerField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
 
