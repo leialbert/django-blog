@@ -24,7 +24,7 @@
 					
 						<ul class="flat">
 							
-							<li>{% for tag in tags %}<a href="{% url 'blogs:tagdetail' tag.id %}">{{ tag.name }}</a>{% endfor %}</li>
+							<li>{% for tag in tags %}<a href="{% url 'blogs:tagdetail' tag.name %}">{{ tag.name }}</a>{% endfor %}</li>
 							
 						</ul>
 				

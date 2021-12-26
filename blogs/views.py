@@ -43,4 +43,7 @@ def cloudtag(request):
     return render(request, 'blogs/tags.html',context)
 
 def tagdetail(request, tagname):
+    posts = Post.objects.filter(tag__name=tagname)
+    context['posts'] = posts
+    context['tagname'] = tagname
     return render(request, 'blogs/tagdetail.html',context)

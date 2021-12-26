@@ -3,7 +3,7 @@
 		<h1 class="page-title">Tags</h1>
 		<div class="tag-cloud">
 			{% for tag in tags %}			
-			<a style="font-size: 1rem;" href="http://leijingwei.com/tags/gunicorn/">{{ tag.name }}<sup>{{ tag.count }}</sup></a>
+			<a style="font-size: 1rem;" href="{% url 'blogs:tagdetail' tag.name %}">{{ tag.name }}<sup>{{ tag.count }}</sup></a>
 			{% endfor %}
 		</div>
 	</div>
