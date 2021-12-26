@@ -25,21 +25,21 @@
 		{% endfor %}		
 
 			
-		<ul class="pagination">
-			<li class="page-item page-prev">
-				{% if page_obj.has_previous %}
-				<a href="{% url 'blogs:page' page_obj.previous_page_number %}" class="page-link" aria-label="Previous"><span aria-hidden="true">← Prev page</span></a>
-				{% endif %}
-			</li>
-			<!-- <li class="page-item">
-				Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-			</li> -->
-			<li class="page-item page-next">
-				{% if page_obj.has_next %}
-			<a href="{% url 'blogs:page' page_obj.next_page_number %}" class="page-link" aria-label="Next"><span aria-hidden="true">Next page →</span></a>
-			{% endif %}
-			</li>
-			</ul>
+<ul class="pagination">
+<li class="page-item page-prev">
+	{% if page_obj.has_previous %}
+	<a href="{% url 'blogs:page' page_obj.previous_page_number %}" class="page-link" aria-label="Previous"><span aria-hidden="true">← Prev page</span></a>
+    {% endif %}
+</li>
+<!-- <li class="page-item">
+	Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+</li> -->
+<li class="page-item page-next">
+	{% if page_obj.has_next %}
+<a href="{% url 'blogs:page' page_obj.next_page_number %}" class="page-link" aria-label="Next"><span aria-hidden="true">Next page →</span></a>
+{% endif %}
+</li>
+</ul>
 
 
 	</div>

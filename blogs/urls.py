@@ -1,3 +1,4 @@
+from os import name
 from django.urls import path
 from . import views
 
@@ -11,4 +12,5 @@ urlpatterns = [
     path('about/',views.about, name='about'),
     path('tags/',views.cloudtag, name='cloudtag'),
     path('tags/<str:tagname>/',views.tagdetail, name='tagdetail'),
+    path('page/<int:id>/',views.page, name='page'),
 ]

@@ -2,6 +2,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.conf import settings
 from django.utils import timezone
+from django.core.paginator import Paginator
 
 from blogs.models import Post,Tag
 
@@ -15,17 +16,32 @@ context = {
         'COPYRIGHT':settings.COPYRIGHT,
         'SOCIAL':settings.SOCIAL,
         'GOOGLE_ANALYTICS_ID':settings.GOOGLE_ANALYTICS_ID,
+        'PAGINATE':settings.PAGINATE,
     }
 
 
 def home(request):
-    posts = Post.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:1]
-    context['posts'] = posts
+    posts = Post.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
+    paginator = Paginator(posts,settings.PAGINATE)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context['page_obj'] = page_obj
     return render(request, 'blogs/home.html',context)
 def list(request):
-    posts = Post.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:4]
-    context['posts'] = posts
+    posts = Post.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
+    paginator = Paginator(posts,settings.PAGINATE)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context['page_obj'] = page_obj
     return render(request, 'blogs/list.html',context)
+
+def page(request,id):
+    posts = Post.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
+    paginator = Paginator(posts,settings.PAGINATE)
+    page_number = id
+    page_obj = paginator.get_page(page_number)
+    context['page_obj'] = page_obj
+    return render(request, 'blogs/page.html',context)
 
 def post(request,id):
     post = Post.objects.get(pk=id)
