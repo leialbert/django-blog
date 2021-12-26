@@ -1,11 +1,12 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.utils import timezone
 class Post(models.Model):
 
     title = models.CharField(max_length=200,default='unnamed title',null=False)
-    slug = models.SlugField(max_length=200)
-    pub_date = models.DateTimeField('date published')
-    intro = models.TextField(max_length=200)
+    slug = models.SlugField(max_length=200,null=True,blank=True)
+    pub_date = models.DateTimeField('date published',default=timezone.now())
+    intro = models.TextField(max_length=200,null=True,blank=True)
     body = RichTextField()
 
     def __str__(self):
@@ -13,7 +14,7 @@ class Post(models.Model):
 class Tag(models.Model):
 
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
-    name = models.CharField(max_length=20, null=True)
+    name = models.CharField(max_length=20, null=True,unique=True)
     count = models.IntegerField(null=True, blank=True,default=0)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
