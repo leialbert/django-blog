@@ -161,7 +161,7 @@ SITE_NAME = "Jingwei's"
 SUBTITLE = "Stay Hungry , Stay Foolish."
 AVATAR = 'blogs/images/logo.png'
 THEME_NAME = "hugo-ink"
-PAGINATE = 1
+PAGINATE = 8
 # "dark" or "auto"
 # customCSS = "css/custom.css"  # Custom CSS applied to default styles.
 # customDarkCSS = "css/custom-dark.css"  # Custom styles applied to dark mode css.
