@@ -16,7 +16,7 @@
 							<a href="{% url 'blogs:post' post.id %}">{{ post.title }}</a>
 						</h4>
 						<span class="description">
-							{{ post.intro }}
+							{{ post.intro|safe }}
 						</span>
 					</div>
 				</div>
