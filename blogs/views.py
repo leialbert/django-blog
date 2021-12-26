@@ -56,6 +56,8 @@ def about(request):
 def cloudtag(request):
     tags = Tag.objects.all()
     context['tags'] = tags
+    for i in tags:
+        i.count = Post.objects.filter(tag__name=i.name).count()
     return render(request, 'blogs/tags.html',context)
 
 def tagdetail(request, tagname):
